@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
@@ -6,12 +6,14 @@ import {
   FormBuilder,
   FormGroup,
   FormsModule,
+  NonNullableFormBuilder,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
 import { ImageSrvice } from '../image.service';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Image } from '../../interfaces/image.interface';
 
 @Component({
   selector: 'app-new-item',
@@ -27,11 +29,18 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./new-item.component.scss'],
 })
 export class NewItemComponent {
-  form!: FormGroup;
+  formBuilder = inject(NonNullableFormBuilder);
+
+  form = this.formBuilder.group({
+    title: ['', Validators.required],
+    artist: ['', Validators.required],
+    imageURL: ['', Validators.required],
+    price: [0, Validators.required],
+  });
+
   hasUnsavedChanges = false;
 
   constructor(
-    private formBuilder: FormBuilder,
     private imageService: ImageSrvice,
     private toastr: ToastrService,
     private router: Router,
@@ -39,13 +48,6 @@ export class NewItemComponent {
   ) {}
 
   ngOnInit() {
-    this.form = this.formBuilder.group({
-      title: ['', Validators.required],
-      artist: ['', Validators.required],
-      imageURL: ['', Validators.required],
-      price: ['', Validators.required],
-    });
-
     this.form.valueChanges.subscribe(() => {
       this.hasUnsavedChanges = this.form.dirty;
     });
@@ -53,7 +55,8 @@ export class NewItemComponent {
 
   onSubmit() {
     this.hasUnsavedChanges = false;
-    this.imageService.addNewImage(this.form.value);
+    const image: Image = this.form.getRawValue();
+    this.imageService.addNewImage(image);
     this.toastr.success('Image added successfully');
     this.router.navigateByUrl('/');
   }
