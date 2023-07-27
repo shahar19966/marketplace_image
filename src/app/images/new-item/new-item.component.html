@@ -1,0 +1,73 @@
+<!-- <div class="card">
+    <form class="form-container">
+        <h3>Add new Image</h3>
+      <span class="p-float-label">
+        <input pInputText id="titel"  />
+        <label htmlFor="titel">titel</label>
+      </span>
+      <span class="p-float-label">
+        <input pInputText id="artist" />
+        <label htmlFor="artist">Artist</label>
+      </span>
+      <span class="p-float-label">
+        <input pInputText id="imgUrl" />
+        <label htmlFor="imgUrl">imgUrl</label>
+      </span>
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">$</span>
+        <input id="price" type="text" pInputText  placeholder=" " />
+        <span class="p-inputgroup-addon">.00</span>
+      </div>
+      <p-button
+      label="submit" 
+      styleClass="p-button-raised"
+      >
+      
+     </p-button>
+    </form>
+  </div>
+   -->
+   <div class="card">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-container">
+      <h3>Add new Image</h3>
+      <span class="p-float-label">
+        <input
+          pInputText id="title"
+          formControlName="title"
+          required />
+        <label htmlFor="title">Title</label>
+      </span>
+      <span class="p-float-label">
+        <input 
+        pInputText id="artist" 
+        formControlName="artist" 
+        required/>
+        <label htmlFor="artist">Artist</label>
+      </span>
+      <span class="p-float-label">
+        <input 
+          pInputText id="imageURL" 
+          formControlName="imageURL"
+          required />
+        <label htmlFor="imageURL" req>Image URL</label>
+      </span>
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">$</span>
+        <input 
+        id="price" 
+        type="number" 
+        pInputText formControlName="price" 
+        placeholder=" "
+        pattern="^[1-9]+[0-9]"
+         />
+        <span class="p-inputgroup-addon">.00</span>
+      </div>
+      <p-button
+        type="submit"
+        label="Submit" 
+        styleClass="p-button-raised"
+        [disabled]="!form.valid"
+      ></p-button>
+    </form>
+  </div>
+  

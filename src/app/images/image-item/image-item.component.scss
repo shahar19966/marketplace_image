@@ -1,0 +1,67 @@
+.card {
+    perspective: 150rem;
+    position: relative;
+    box-shadow: 0 1.5rem 4rem rgba(black, .15);
+    overflow: hidden; 
+    gap:15px;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    transition: all 0.3s ease;
+
+    .image-container {
+        height: 80%;
+        overflow: hidden;
+        height: 250px;
+      }
+      
+      .img {
+        display: block; 
+        width: 100%; 
+        height: auto; 
+      }
+    
+
+}
+
+.title-icon {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    font-weight: bolder;
+    gap: 3px;
+}
+
+.p-button-rounded.p-button-help.p-button-text.heart{
+    padding: 0;
+}
+
+.title{
+    padding-top: 12px;
+}
+.titel-price{
+    display: flex;
+    flex-direction: row;
+    font-weight: bolder;
+    font-size: 12px;
+    justify-content: space-between;
+}
+
+.card-details{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    padding: 10px;
+}
+.p-element{
+    align-self: center;
+}
+:host ::ng-deep .p-button-rounded {
+ 
+    height: 1rem;
+
+  }
+
+  .card:hover {
+    transform: scale(1.05); 
+  }

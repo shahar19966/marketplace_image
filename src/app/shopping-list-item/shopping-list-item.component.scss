@@ -1,0 +1,44 @@
+.shopping-list-item{
+    display: flex;
+    justify-content: space-between;
+    gap:8px;
+    
+    
+    &__img-list{
+        width: 4rem;
+        box-shadow: 0 1.5rem 4rem rgba(black, .15);
+        border-radius: 10%;
+        
+    }
+    .price{
+        font-weight: bolder;
+        display: flex;
+        flex-direction: column;
+        justify-content:end ;
+        gap:5px;
+    }
+    .img-titel{
+        display: flex;
+        gap:10px;
+        justify-content: center;
+        
+    }
+    .p-button.p-button-icon-only.p-button-rounded{
+        height: 2rem;
+        width: 2rem;
+    }
+
+    .quantity{
+        display: flex;
+        gap: 7px;
+        justify-content: center;
+    }
+.title-quantity{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    justify-content: center;
+    width: 150px;
+}
+   
+}

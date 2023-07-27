@@ -1,0 +1,35 @@
+<div class="header">
+  <div class="header-content">
+    <div class="homeBtn-newItem">
+    <a routerLink="/images-list">
+    <img src="https://www.primefaces.org/harmony-ng/assets/layout/images/harmony-logo.png"/>
+    </a>
+    <div style="align-self: center;">
+    <p-button
+     label="Add new image" 
+     styleClass="p-button-raised"
+     (click)="onAdddNewImage()"
+     >    
+    </p-button>
+</div>  
+   </div>
+    <div class="header-buttons">
+        <div class="search-input">
+            <span class="p-input-icon-right">
+              <i class="pi pi-search"></i>
+              <input  #searchInput type="text" pInputText
+            placeholder="Search..."
+              (input)="onSearch(searchInput.value)"/>
+              <!-- <input #searchInput type="text" (input)="onSearch(searchInput.value)" placeholder="Search..." /> -->
+            </span>
+          </div>
+        <p-button styleClass="p-button-rounded p-button-info p-button-text p-button-raised">
+            <i class="pi pi-heart mr-3 p-text-secondary" pBadge style="font-size: 2rem" value="0"></i>
+        </p-button>
+        <p-button styleClass="p-button-rounded p-button-info p-button-text p-button-raised"
+        (click)="onCartClick()">
+            <i class="pi pi-shopping-cart mr-3 p-text-secondary" pBadge style="font-size: 2rem" value={{count()}}></i>
+        </p-button>
+    </div>
+  </div>
+</div>

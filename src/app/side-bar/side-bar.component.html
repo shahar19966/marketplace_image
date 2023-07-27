@@ -1,0 +1,16 @@
+
+ <p-sidebar styleClass="w-30rem" [visible]="shoppingSideBar()" position="left" [showCloseIcon]="false">
+    <div *ngIf="shoppingList() && shoppingList().length > 0; else emptyShoppingList">
+      <div class="shopping-list-container">
+        <app-shopping-list-item *ngFor="let imageElement of shoppingList()" [shoppingItem]="imageElement">
+        </app-shopping-list-item>
+        <p 
+        style="align-self: center; font-weight: bold;">total cost: {{ '$' + totalPrice() }}</p>
+      </div>
+    </div>
+  
+    <ng-template #emptyShoppingList>
+      <p>The shopping list is empty.</p>
+    </ng-template>
+  </p-sidebar>
+  

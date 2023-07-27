@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/md-light-deeppurple/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap');
+@import "../node_modules/ngx-toastr/toastr";
+
+*{
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+}
