@@ -1,6 +1,6 @@
 
 import { CanDeactivateFn } from '@angular/router';
-import { NewItemComponent } from './images/new-item/new-item.component';
+import { NewItemComponent } from '../images/new-item/new-item.component';
 
 export const deactivationGuard: CanDeactivateFn<NewItemComponent> = (component) => {
   if (component.hasUnsavedChanges) {
