@@ -53,8 +53,7 @@ export class NewItemComponent {
 
   onSubmit() {
     this.hasUnsavedChanges = false;
-    const { title, artist, imageURL, price } = this.form.value;
-    this.imageService.addNewImage(title, imageURL, artist, price);
+    this.imageService.addNewImage(this.form.value);
     this.toastr.success('Image added successfully');
     this.router.navigateByUrl('/');
   }
