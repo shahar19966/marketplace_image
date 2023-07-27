@@ -1,5 +1,5 @@
 import { Injectable, computed, signal } from "@angular/core";
-import { Image } from "../interface/image.interface";
+import { Image } from "../interfaces/image.interface";
 
 @Injectable({
     providedIn:'root'
@@ -11,18 +11,18 @@ export class ImageSrvice{
 
        filteredImages = computed(() => {
         const term = this.searchTerm();
-        
+
         if (term === '') {
-          return this.images();  
+          return this.images();
         }
-      
+
         return this.images().filter(image =>
           image.title.toLowerCase().includes(term.toLowerCase()) ||
           image.artist.toLowerCase().includes(term.toLowerCase())
         );
-        
+
       }
-     
+
       );
 
       private getImagesFromLocalStorage(): Image[] {
@@ -113,7 +113,7 @@ export class ImageSrvice{
           imageURL: "https://image.shutterstock.com/image-photo/3d-image-abstract-shapes-morphing-260nw-2256633509.jpg",
           artist: "Emma Davis",
           price: 85
-        }, 
+        },
         ];
       }
 
@@ -121,10 +121,10 @@ export class ImageSrvice{
 
       addNewImage(title:string,imageURL:string,artist:string,price:number)
       {
-       
+
         this.images.mutate(values => values.push({title,imageURL,artist,price}));
         this.saveImagesToLocalStorage(this.images());
- 
+
       }
 
       private saveImagesToLocalStorage(images: Image[]): void {

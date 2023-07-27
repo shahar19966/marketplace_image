@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { ShoppingCardService } from './shopping-card.service';
-import { ShoppingItem } from 'src/app/interface/shopping-item.interface';
+import { ShoppingItem } from 'src/app/interfaces/shopping-item.interface';
 
 @Component({
   selector: 'app-shopping-list-item',
@@ -34,6 +34,6 @@ export class ShoppingListItemComponent {
   }
 
 
-  
+
 
 }

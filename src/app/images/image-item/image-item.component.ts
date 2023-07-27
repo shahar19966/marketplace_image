@@ -1,7 +1,7 @@
 import { Component, Inject, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
-import { Image } from 'src/app/interface/image.interface';
+import { Image } from 'src/app/interfaces/image.interface';
 import { ShoppingCardService } from 'src/app/shopping-list-item/shopping-card.service';
 import { ToastrService } from 'ngx-toastr';
 
@@ -16,7 +16,7 @@ import { ToastrService } from 'ngx-toastr';
 export class ImageItemComponent {
   @Input() image: Image | undefined;
 
-  //ask tomer about that!!!! 
+  //ask tomer about that!!!!
   // private toastr = Inject(ToastrService);
   constructor(private shoppingCartService: ShoppingCardService,
     private toastr: ToastrService,

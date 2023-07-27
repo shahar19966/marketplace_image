@@ -1,6 +1,6 @@
 import { Injectable, signal } from '@angular/core';
-import {Image} from "../interface/image.interface"
-import { ShoppingItem } from '../interface/shopping-item.interface';
+import {Image} from "../interfaces/image.interface"
+import { ShoppingItem } from '../interfaces/shopping-item.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +18,7 @@ export class ShoppingCardService {
     this.shoppingSideBar.set(!this.shoppingSideBar());
   }
 
-//update the global count 
+//update the global count
   updateCount(quantity:number,incrase:boolean) {
     if(incrase)
     this.count.update((value) => value + quantity);
@@ -26,7 +26,7 @@ export class ShoppingCardService {
     this.count.update((value) => value - quantity);
   }
 
-  //update the total price 
+  //update the total price
   updateTotalPrice(price:number,incrase:boolean)
   {
     if(incrase)
@@ -35,10 +35,10 @@ export class ShoppingCardService {
     this.totalPrice.update((value) => value - price);
 
   }
- 
 
 
-//add Item(Image) to shopping cart 
+
+//add Item(Image) to shopping cart
 //triger( Add to cart/image item component ) / + in shopping-list-item
   addItemToCart(image:Image)
   {
@@ -48,7 +48,7 @@ export class ShoppingCardService {
   }
 
 
-  // Check if the image exists in the shopping list and update quantity/price accordingly or crete new item 
+  // Check if the image exists in the shopping list and update quantity/price accordingly or crete new item
   checkIfImageExsist(image:Image){
     const existingItem = this.shoppingList().find(item => item.image === image);
     if (existingItem) {
@@ -59,7 +59,7 @@ export class ShoppingCardService {
    }
 
 
-   //update the Quantity and price of shopping element 
+   //update the Quantity and price of shopping element
    updateQuantityAndPrice(shoppingItem:ShoppingItem | undefined)
    {
     if(typeof shoppingItem === 'undefined')
@@ -84,7 +84,7 @@ export class ShoppingCardService {
       this.updateCount(ShoppingItem.quantity,false);
       this.updateTotalPrice(ShoppingItem.price,false);
     }
-    
+
 }
 
 decreaseQuantity(shoppingItem:ShoppingItem | undefined){
@@ -97,7 +97,7 @@ decreaseQuantity(shoppingItem:ShoppingItem | undefined){
     shoppingItem.price=shoppingItem.price-shoppingItem.image.price;
 
     this.updateTotalPrice(shoppingItem.image.price,false);
-    this.updateCount(1,false);    
+    this.updateCount(1,false);
 }
 
 
