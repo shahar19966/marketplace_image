@@ -11,7 +11,7 @@ import { ImageSrvice } from './image.service';
   styleUrls: ['./images.component.scss'],
 })
 export class ImagesComponent {
-  imagesList = this.imageService.filteredImages;
+  images = this.imageService.filteredImages;
 
   constructor(private imageService: ImageSrvice) {}
 }

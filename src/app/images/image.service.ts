@@ -12,7 +12,7 @@ export class ImageSrvice {
   filteredImages = computed(() => {
     const term = this.searchTerm();
 
-    if (term === '') {
+    if (!term) {
       return this.images();
     }
 
@@ -24,9 +24,7 @@ export class ImageSrvice {
   });
 
   addNewImage(image: Image) {
-    this.images.mutate((values) =>
-      values.push(image)
-    );
+    this.images.mutate((values) => values.push(image));
     this.saveImagesToLocalStorage(this.images());
   }
 

@@ -1,6 +1,3 @@
 <div class="images-list">
-  <app-image-item
-    *ngFor="let imageElement of imagesList()"
-    [image]="imageElement"
-  ></app-image-item>
+  <app-image-item *ngFor="let image of images()" [image]="image" />
 </div>
