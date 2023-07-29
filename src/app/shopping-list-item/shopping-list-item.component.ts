@@ -7,33 +7,25 @@ import { ShoppingItem } from 'src/app/interface/shopping-item.interface';
 @Component({
   selector: 'app-shopping-list-item',
   standalone: true,
-  imports: [CommonModule,ButtonModule],
+  imports: [CommonModule, ButtonModule],
   templateUrl: './shopping-list-item.component.html',
-  styleUrls: ['./shopping-list-item.component.scss']
+  styleUrls: ['./shopping-list-item.component.scss'],
 })
 export class ShoppingListItemComponent {
   @Input() shoppingItem: ShoppingItem | undefined;
 
   constructor(private shoppingCartService: ShoppingCardService) {}
 
-  onDeleteFromCart()
-  {
+  onDeleteFromCart() {
     this.shoppingCartService.removeItemFromCart(this.shoppingItem);
-
   }
-  onPlusClick()
-  {
-       const image = this.shoppingItem?.image;
-       if (image) {
-           this.shoppingCartService.addItemToCart(image);
-       }
+  onPlusClick() {
+    const image = this.shoppingItem?.image;
+    if (image) {
+      this.shoppingCartService.addItemToCart(image);
+    }
   }
-  onMinusClick()
-  {
-    this.shoppingCartService.decreaseQuantity(this.shoppingItem);
+  onMinusClick() {
+    this.shoppingCartService.decreaseQuantityAndCount(this.shoppingItem);
   }
-
-
-  
-
 }

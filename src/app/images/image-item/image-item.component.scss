@@ -1,67 +1,78 @@
 .card {
-    perspective: 150rem;
-    position: relative;
-    box-shadow: 0 1.5rem 4rem rgba(black, .15);
-    overflow: hidden; 
-    gap:15px;
-    display: flex;
-    flex-direction: column;
-    gap:10px;
-    transition: all 0.3s ease;
+  perspective: 150rem;
+  position: relative;
+  box-shadow: 0 1.5rem 4rem rgba(black, 0.15);
+  overflow: hidden;
+  gap: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: all 0.3s ease;
 
-    .image-container {
-        height: 80%;
-        overflow: hidden;
-        height: 250px;
-      }
-      
-      .img {
-        display: block; 
-        width: 100%; 
-        height: auto; 
-      }
-    
+  .image-container {
+    height: 80%;
+    overflow: hidden;
+    height: 250px;
+  }
 
+  .img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
 }
 
 .title-icon {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-    font-weight: bolder;
-    gap: 3px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  font-weight: bolder;
+  gap: 3px;
 }
 
-.p-button-rounded.p-button-help.p-button-text.heart{
-    padding: 0;
+.p-button-rounded.p-button-help.p-button-text.heart {
+  padding: 0;
 }
 
-.title{
-    padding-top: 12px;
+.title {
+  padding-top: 12px;
 }
-.titel-price{
-    display: flex;
-    flex-direction: row;
-    font-weight: bolder;
-    font-size: 12px;
-    justify-content: space-between;
+.titel-price {
+  display: flex;
+  flex-direction: row;
+  font-weight: bolder;
+  font-size: 12px;
+  justify-content: space-between;
 }
 
-.card-details{
-    display: flex;
-    flex-direction: column;
-    gap:10px;
-    padding: 10px;
+.card-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
 }
-.p-element{
-    align-self: center;
+.p-element {
+  align-self: center;
 }
-:host ::ng-deep .p-button-rounded {
- 
-    height: 1rem;
 
+.card:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+  .img {
+    filter: brightness(50%);
   }
+}
 
-  .card:hover {
-    transform: scale(1.05); 
-  }
+.card-btn {
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  position: absolute;
+  top: 8%;
+  left: 88%;
+}
+
+.card:hover .card-btn {
+  opacity: 1;
+  z-index: 1;
+}
