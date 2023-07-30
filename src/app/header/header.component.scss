@@ -1,7 +1,7 @@
 .header {
-    width: 100%;
-    height: 90px;
-    padding: 15px;
+  width: 100%;
+  height: 90px;
+  padding: 15px;
 }
 
 .header-content {
@@ -19,21 +19,24 @@
   gap: 1rem;
 }
 
-.pi.pi-heart.mr-3.p-text-secondary
-{
-  color:#673AB7
+.pi.pi-heart.mr-3.p-text-secondary {
+  color: #673AB7
 }
-.pi.pi-shopping-cart.mr-3.p-text-secondary{
+
+.pi.pi-shopping-cart.mr-3.p-text-secondary {
   color: #673AB7;
 
 }
-.p-button-raised{
+
+.p-button-raised {
   align-items: center;
 }
-.homeBtn-newItem{
+
+.homeBtn-newItem {
   display: flex;
-  gap:10px;
+  gap: 10px;
 }
-.p-button-raised{
+
+.p-button-raised {
   align-self: center;
 }

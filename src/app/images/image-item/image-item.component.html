@@ -1,14 +1,18 @@
 <div class="card">
   <div class="image-container">
-    <img class="img" src={{image?.imageURL}} />
+    <img class="img" src="{{ image?.imageURL }}" />
   </div>
-<div class="card-details">
-<div class="titel-price">
-<div>{{image?.title}}</div>
-<div>{{image?.price}}$</div>
-</div>
-<div style="font-size: 10px;">by {{image?.artist}}</div>
+  <div class="card-details">
+    <div class="titel-price">
+      <div>{{ image?.title }}</div>
+      <div>{{ image?.price }}$</div>
+    </div>
+    <div style="font-size: 10px">by {{ image?.artist }}</div>
 
-  <p-button label="Add to cart" styleClass="p-button-rounded" (click)="onAddToCart()"></p-button>
-</div>
+    <p-button
+      label="Add to cart"
+      styleClass="p-button-rounded"
+      (click)="onAddToCart()"
+    ></p-button>
+  </div>
 </div>
