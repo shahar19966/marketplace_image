@@ -5,6 +5,12 @@ import { provideToastr } from 'ngx-toastr';
 import { routes } from './app.routes';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideLottieOptions } from 'ngx-lottie';
+import {
+  provideHttpClient,
+  withFetch,
+  withInterceptors,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -12,6 +18,8 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
 
     provideAnimations(),
+    //provide http Client
+    provideHttpClient(withFetch(), withInterceptorsFromDi()),
 
     //ngx-lottie
     provideLottieOptions({

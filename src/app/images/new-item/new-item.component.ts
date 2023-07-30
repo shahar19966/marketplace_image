@@ -11,8 +11,10 @@ import {
 } from '@angular/forms';
 import { ImageSrvice } from '../image.service';
 import { ToastrService } from 'ngx-toastr';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Image } from '../../interfaces/image.interface';
+import { ImageUrlValidator } from './imageURL.validator';
+import { TooltipModule } from 'primeng/tooltip';
 
 @Component({
   selector: 'app-new-item',
@@ -24,29 +26,43 @@ import { Image } from '../../interfaces/image.interface';
     FormsModule,
     ReactiveFormsModule,
     AutoCompleteModule,
+    TooltipModule,
   ],
   templateUrl: './new-item.component.html',
   styleUrls: ['./new-item.component.scss'],
 })
 export class NewItemComponent {
+  //inject
   formBuilder = inject(NonNullableFormBuilder);
-
-  form = this.formBuilder.group({
-    title: ['', Validators.required],
-    artist: ['', Validators.required],
-    imageURL: ['', Validators.required],
-    price: [0, Validators.required],
-    category: ['', Validators.required],
-  });
+  imageUrlValidator = inject(ImageUrlValidator);
+  imageService = inject(ImageSrvice);
+  toastr = inject(ToastrService);
+  router = inject(Router);
 
   hasUnsavedChanges = false;
 
-  constructor(
-    private imageService: ImageSrvice,
-    private toastr: ToastrService,
-    private router: Router,
-    private route: ActivatedRoute
-  ) {}
+  form = this.formBuilder.group({
+    title: [
+      '',
+      [Validators.required, Validators.minLength(3), Validators.maxLength(20)],
+    ],
+    artist: [
+      '',
+      [Validators.required, Validators.minLength(3), Validators.maxLength(20)],
+    ],
+    imageURL: [
+      '',
+      {
+        validators: [Validators.required],
+        asyncValidators: [
+          this.imageUrlValidator.validate.bind(this.imageUrlValidator),
+        ],
+        updateOn: 'blur',
+      },
+    ],
+    price: [0, [Validators.required, Validators.min(11), Validators.max(1000)]],
+    category: [''],
+  });
 
   ngOnInit() {
     this.form.valueChanges.subscribe(() => {

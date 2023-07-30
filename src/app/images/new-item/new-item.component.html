@@ -1,27 +1,50 @@
 <div class="card">
   <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-container">
     <h3>Add new Image</h3>
+
+    <!--titel input-->
     <span class="p-float-label">
-      <input pInputText id="title" formControlName="title" required />
+      <input
+        pInputText
+        id="title"
+        formControlName="title"
+        pTooltip="3-20 chars required*"
+      />
       <label htmlFor="title">Title</label>
     </span>
+
+    <!--artist input-->
     <span class="p-float-label">
-      <input pInputText id="artist" formControlName="artist" required />
+      <input
+        pInputText
+        id="artist"
+        formControlName="artist"
+        pTooltip="3-20 chars required*"
+      />
       <label htmlFor="artist">Artist</label>
     </span>
+
+    <!--imageURL input-->
     <span class="p-float-label">
-      <input pInputText id="imageURL" formControlName="imageURL" required />
+      <input
+        pInputText
+        id="imageURL"
+        formControlName="imageURL"
+        pTooltip="Valid URL required*"
+      />
       <label htmlFor="imageURL" req>Image URL</label>
     </span>
+
+    <!--price input-->
     <div class="p-inputgroup">
       <span class="p-inputgroup-addon">$</span>
       <input
         id="price"
         type="number"
-        pInputText
         formControlName="price"
         placeholder=" "
-        pattern="^[1-9]+[0-9]"
+        pInputText
+        pTooltip="Between 11 and 1000 required*"
       />
       <span class="p-inputgroup-addon">.00</span>
     </div>
@@ -32,6 +55,8 @@
       (completeMethod)="filterCountry($event)"
       formControlName="category"
     ></p-autoComplete> -->
+
+    <!--submit button-->
     <p-button
       type="submit"
       label="Submit"

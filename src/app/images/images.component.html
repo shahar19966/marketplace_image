@@ -4,6 +4,8 @@
     *ngIf="loadingService.loading(); else loadingImage"
   ></app-loader>
   <ng-template #loadingImage>
-    <app-image-item *ngFor="let image of images()" [image]="image" />
+    <div class="loadingImage">
+      <app-image-item *ngFor="let image of images()" [image]="image" />
+    </div>
   </ng-template>
 </div>
