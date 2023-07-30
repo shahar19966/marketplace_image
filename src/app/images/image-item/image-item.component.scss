@@ -56,11 +56,8 @@
 }
 
 .card:hover {
-  background-color: rgba(0, 0, 0, 0.3);
+  //   background-color: rgba(0, 0, 0, 0.2);
   transform: scale(1.05);
-  .img {
-    filter: brightness(50%);
-  }
 }
 
 .card-btn {
@@ -68,7 +65,7 @@
   opacity: 0;
   transition: opacity 0.3s ease;
   position: absolute;
-  top: 8%;
+  top: 93%;
   left: 88%;
 }
 
