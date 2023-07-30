@@ -8,6 +8,7 @@ import { MOCK_IMAGES } from './images';
 export class ImageSrvice {
   searchTerm = signal('');
   images = signal(this.getImagesFromLocalStorage());
+  loading = signal(true);
 
   filteredImages = computed(() => {
     const term = this.searchTerm();

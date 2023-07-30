@@ -4,6 +4,7 @@ import { provideToastr } from 'ngx-toastr';
 
 import { routes } from './app.routes';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideLottieOptions } from 'ngx-lottie';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -11,6 +12,11 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
 
     provideAnimations(),
+
+    //ngx-lottie
+    provideLottieOptions({
+      player: () => import(/* webpackChunkName: 'lottie-web' */ 'lottie-web'),
+    }),
 
     // ngx-toastr
     provideToastr({

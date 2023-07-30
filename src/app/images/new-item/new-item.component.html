@@ -1,32 +1,3 @@
-<!-- <div class="card">
-    <form class="form-container">
-        <h3>Add new Image</h3>
-      <span class="p-float-label">
-        <input pInputText id="titel"  />
-        <label htmlFor="titel">titel</label>
-      </span>
-      <span class="p-float-label">
-        <input pInputText id="artist" />
-        <label htmlFor="artist">Artist</label>
-      </span>
-      <span class="p-float-label">
-        <input pInputText id="imgUrl" />
-        <label htmlFor="imgUrl">imgUrl</label>
-      </span>
-      <div class="p-inputgroup">
-        <span class="p-inputgroup-addon">$</span>
-        <input id="price" type="text" pInputText  placeholder=" " />
-        <span class="p-inputgroup-addon">.00</span>
-      </div>
-      <p-button
-      label="submit"
-      styleClass="p-button-raised"
-      >
-
-     </p-button>
-    </form>
-  </div>
-   -->
 <div class="card">
   <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-container">
     <h3>Add new Image</h3>
@@ -54,6 +25,13 @@
       />
       <span class="p-inputgroup-addon">.00</span>
     </div>
+    <!-- <p-autoComplete
+      [(ngModel)]="selectedCountry"
+      [dropdown]="true"
+      [suggestions]="filteredCountries"
+      (completeMethod)="filterCountry($event)"
+      formControlName="category"
+    ></p-autoComplete> -->
     <p-button
       type="submit"
       label="Submit"

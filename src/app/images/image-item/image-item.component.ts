@@ -36,8 +36,6 @@ export class ImageItemComponent {
     if (userResponse && this.image) {
       this.imageService.deleteImage(this.image);
       this.toastr.success('Image delete successfully');
-    } else {
-      this.toastr.error('Image is undefined, cannot remove from the list.');
     }
   }
 }

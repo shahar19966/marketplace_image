@@ -1,3 +1,9 @@
 <div class="images-list">
-  <app-image-item *ngFor="let image of images()" [image]="image" />
+  <app-loader
+    class="loading"
+    *ngIf="loadingService.loading(); else loadingImage"
+  ></app-loader>
+  <ng-template #loadingImage>
+    <app-image-item *ngFor="let image of images()" [image]="image" />
+  </ng-template>
 </div>

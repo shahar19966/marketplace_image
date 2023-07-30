@@ -1,9 +1,11 @@
 .images-list {
-
   display: flex;
   flex-wrap: wrap;
   gap: 40px;
   flex-direction: row;
   justify-content: center;
-
+}
+.loading {
+  width: 30%;
+  height: 30%;
 }

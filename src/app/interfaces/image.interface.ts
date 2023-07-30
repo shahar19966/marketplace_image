@@ -3,4 +3,5 @@ export interface Image {
   imageURL: string;
   artist: string;
   price: number;
+  category: string;
 }

@@ -2,9 +2,8 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
+import { AutoCompleteModule } from 'primeng/autocomplete';
 import {
-  FormBuilder,
-  FormGroup,
   FormsModule,
   NonNullableFormBuilder,
   ReactiveFormsModule,
@@ -24,6 +23,7 @@ import { Image } from '../../interfaces/image.interface';
     ButtonModule,
     FormsModule,
     ReactiveFormsModule,
+    AutoCompleteModule,
   ],
   templateUrl: './new-item.component.html',
   styleUrls: ['./new-item.component.scss'],
@@ -36,6 +36,7 @@ export class NewItemComponent {
     artist: ['', Validators.required],
     imageURL: ['', Validators.required],
     price: [0, Validators.required],
+    category: ['', Validators.required],
   });
 
   hasUnsavedChanges = false;
