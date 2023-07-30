@@ -1,21 +1,28 @@
 <div class="header">
   <div class="header-content">
+    <!-- left side -->
     <div class="homeBtn-newItem">
+      <!-- site logo -->
       <a routerLink="/images-list">
         <img
           src="https://www.primefaces.org/harmony-ng/assets/layout/images/harmony-logo.png"
         />
       </a>
+
+      <!-- new image button -->
       <div style="align-self: center">
         <p-button
           label="Add new image"
           styleClass="p-button-raised"
-          (click)="onAdddNewImage()"
+          (click)="onAddNewImage()"
         >
         </p-button>
       </div>
     </div>
+
+    <!-- right side -->
     <div class="header-buttons">
+      <!-- search input -->
       <div class="search-input">
         <span class="p-input-icon-right">
           <i class="pi pi-search"></i>
@@ -26,9 +33,10 @@
             placeholder="Search..."
             (input)="onSearch(searchInput.value)"
           />
-          <!-- <input #searchInput type="text" (input)="onSearch(searchInput.value)" placeholder="Search..." /> -->
         </span>
       </div>
+
+      <!-- like button -->
       <p-button
         styleClass="p-button-rounded p-button-info p-button-text p-button-raised"
       >
@@ -39,6 +47,8 @@
           value="0"
         ></i>
       </p-button>
+
+      <!-- cart button -->
       <p-button
         styleClass="p-button-rounded p-button-info p-button-text p-button-raised"
         (click)="onCartClick()"

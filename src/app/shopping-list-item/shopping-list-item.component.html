@@ -4,8 +4,8 @@
     <div class ="title-quantity">
     <div style="margin-top: 15px;">{{shoppingItem?.image?.title}}</div>
     <div class="quantity">
-    <button 
-    pButton icon="pi pi-minus" 
+    <button
+    pButton icon="pi pi-minus"
     class="md:align-self-end mb-1 p-button-rounded"
     style="width: 1rem; height: 1rem;"
     (click)="onMinusClick()"
@@ -13,9 +13,9 @@
     <p style="font-size: 20px; font-weight: bolder;">
         {{shoppingItem?.quantity}}
     </p>
-    <button 
+    <button
     style="width: 1rem; height: 1rem;"
-    pButton icon="pi pi-plus" 
+    pButton icon="pi pi-plus"
     class="md:align-self-end mb-1 p-button-rounded"
     (click)="onPlusClick()"
     ></button>
@@ -24,8 +24,8 @@
     </div>
     <div class = "price">
     <span class=>{{'$'+ shoppingItem?.price}}</span>
-    <button 
-    pButton icon="pi pi-trash" 
+    <button
+    pButton icon="pi pi-trash"
     class="md:align-self-end mb-2 p-button-rounded"
     (click)="onDeleteFromCart()"
     ></button>

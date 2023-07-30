@@ -1,6 +1,6 @@
 import { Injectable, signal } from '@angular/core';
-import { Image } from '../interface/image.interface';
-import { ShoppingItem } from '../interface/shopping-item.interface';
+import { Image } from '../interfaces/image.interface';
+import { ShoppingItem } from '../interfaces/shopping-item.interface';
 
 @Injectable({
   providedIn: 'root',

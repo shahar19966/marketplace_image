@@ -33,7 +33,7 @@ export class HeaderComponent {
   onCartClick() {
     this.shoppingCartService.openShoppingSideBar();
   }
-  onAdddNewImage() {
+  onAddNewImage() {
     this.router.navigate(['new-item'], { relativeTo: this.route });
   }
   onSearch(value: string) {

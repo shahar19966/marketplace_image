@@ -7,22 +7,23 @@ import { ShoppingListItemComponent } from '../shopping-list-item/shopping-list-i
 @Component({
   selector: 'app-side-bar',
   standalone: true,
-  imports: [CommonModule,SidebarModule,ButtonModule,ShoppingListItemComponent],
+  imports: [
+    CommonModule,
+    SidebarModule,
+    ButtonModule,
+    ShoppingListItemComponent,
+  ],
   templateUrl: './side-bar.component.html',
   styleUrls: ['./side-bar.component.scss'],
 })
-export class SideBarComponent  {
-
+export class SideBarComponent {
   shoppingSideBar = this.shoppingCartService.shoppingSideBar;
   shoppingList = this.shoppingCartService.shoppingList;
   totalPrice = this.shoppingCartService.totalPrice;
 
+  constructor(private shoppingCartService: ShoppingCardService) {}
 
- constructor(private shoppingCartService: ShoppingCardService) {}
-
- 
-  onSidebarHide(){
+  onSidebarHide() {
     this.shoppingCartService.openShoppingSideBar();
   }
-
 }
