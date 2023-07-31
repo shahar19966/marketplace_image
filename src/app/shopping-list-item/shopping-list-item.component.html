@@ -28,7 +28,7 @@
     </div>
   </div>
   <div class="price">
-    <span>{{ "$" + shoppingItem.price }}</span>
+    <span>{{ "$" + shoppingItem.quantity * shoppingItem.image.price }}</span>
     <button
       pButton
       icon="pi pi-trash"

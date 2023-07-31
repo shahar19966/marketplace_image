@@ -12,15 +12,16 @@ export class ShoppingCardService {
     this.getFromLocalStorage<ShoppingItem[]>('shoppingList', [])
   );
 
-  //calculates the total cost of the items in the shopping list
+  //calculates the total price of the items in the shopping list
   totalPrice = computed(() => {
     let sum = 0;
     for (const item of this.shoppingList()) {
-      sum += item.price;
+      sum += item.image.price * item.quantity;
     }
     return sum;
   });
 
+  //calculates the total quantity of the items in the shopping list
   totalQuantity = computed(() => {
     let sum = 0;
     for (const item of this.shoppingList()) {
@@ -41,11 +42,9 @@ export class ShoppingCardService {
 
       if (!item) {
         // Image does not exist in shopping cart, add it
-        list.push({ image, quantity: 1, price: image.price });
+        list.push({ image, quantity: 1 });
       } else {
-        // Image exists in shopping cart, increase quantity and update price
         item.quantity++;
-        item.price += image.price;
       }
     });
   }
@@ -63,13 +62,12 @@ export class ShoppingCardService {
     });
   }
 
-  removeQuantityFromCart(shoppingItem: ShoppingItem) {
+  //decrease the quantity from shopping cart
+  decreaseQuantityFromCart(shoppingItem: ShoppingItem) {
     this.shoppingList.mutate(() => {
       const item = this.shoppingList().find((item) => item === shoppingItem);
       if (item && item.quantity > 1) {
-        // Item exists in the shopping cart, decrease quantity and update price
         item.quantity--;
-        item.price -= item.image.price;
       }
     });
   }

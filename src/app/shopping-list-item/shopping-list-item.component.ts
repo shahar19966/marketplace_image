@@ -25,6 +25,6 @@ export class ShoppingListItemComponent {
     this.shoppingCartService.addImage(image);
   }
   decreaseQuantity() {
-    this.shoppingCartService.removeQuantityFromCart(this.shoppingItem);
+    this.shoppingCartService.decreaseQuantityFromCart(this.shoppingItem);
   }
 }
