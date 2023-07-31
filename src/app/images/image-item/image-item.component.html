@@ -4,21 +4,21 @@
       class="card-btn"
       icon="pi pi-trash"
       styleClass="p-button-rounded p-button-danger p-button-text"
-      (click)="onDeleteButton()"
+      (click)="deleteItem()"
     ></p-button>
-    <img class="img" src="{{ image?.imageURL }}" />
+    <img class="img" [src]="image.imageURL" />
   </div>
   <div class="card-details">
     <div class="titel-price">
-      <div>{{ image?.title }}</div>
-      <div>{{ image?.price }}$</div>
+      <div>{{ image.title }}</div>
+      <div>{{ image.price }}$</div>
     </div>
-    <div style="font-size: 13px">by {{ image?.artist }}</div>
+    <div style="font-size: 13px">by {{ image.artist }}</div>
 
     <p-button
       label="Add to cart"
       styleClass="p-button-rounded"
-      (click)="onAddToCart()"
+      (click)="addToCart()"
     ></p-button>
   </div>
 </div>
