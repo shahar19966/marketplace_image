@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { InputTextModule } from 'primeng/inputtext';
 import { BadgeModule } from 'primeng/badge';
 import { ButtonModule } from 'primeng/button';
-import { ShoppingCardService } from '../shopping-list-item/shopping-card.service';
+import { ShoppingCartService } from '../shopping-list-item/shopping-cart.service';
 import { Router, ActivatedRoute, RouterLink } from '@angular/router';
 import { ImageService } from '../images/image.service';
 
@@ -24,7 +24,7 @@ export class HeaderComponent {
   totalQuantity = this.shoppingCartService.totalQuantity;
 
   constructor(
-    private shoppingCartService: ShoppingCardService,
+    private shoppingCartService: ShoppingCartService,
     private imageService: ImageService,
     private router: Router,
     private route: ActivatedRoute

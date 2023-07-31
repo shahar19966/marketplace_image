@@ -5,7 +5,7 @@ import { ShoppingItem } from '../interfaces/shopping-item.interface';
 @Injectable({
   providedIn: 'root',
 })
-export class ShoppingCardService {
+export class ShoppingCartService {
   showSidebar = signal(false);
 
   shoppingList = signal(
@@ -32,7 +32,7 @@ export class ShoppingCardService {
 
   //open and close the side bar if click on cart
   openShoppingSideBar() {
-    this.showSidebar.set(!this.showSidebar());
+    this.showSidebar.update((value) => !value);
   }
 
   //add image to shopping list
@@ -54,16 +54,16 @@ export class ShoppingCardService {
     if (!shoppingItem) {
       return;
     }
-    this.shoppingList.mutate((value) => {
-      const index = value.indexOf(shoppingItem);
+    this.shoppingList.mutate((items) => {
+      const index = items.indexOf(shoppingItem);
       if (index > -1) {
-        value.splice(index, 1);
+        items.splice(index, 1);
       }
     });
   }
 
   //decrease the quantity from shopping cart
-  decreaseQuantityFromCart(shoppingItem: ShoppingItem) {
+  reduceItemQuantity(shoppingItem: ShoppingItem) {
     this.shoppingList.mutate(() => {
       const item = this.shoppingList().find((item) => item === shoppingItem);
       if (item && item.quantity > 1) {

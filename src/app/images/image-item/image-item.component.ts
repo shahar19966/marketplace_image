@@ -2,7 +2,7 @@ import { Component, Inject, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { Image } from 'src/app/interfaces/image.interface';
-import { ShoppingCardService } from 'src/app/shopping-list-item/shopping-card.service';
+import { ShoppingCartService } from 'src/app/shopping-list-item/shopping-cart.service';
 import { ToastrService } from 'ngx-toastr';
 import { ImageService } from '../image.service';
 
@@ -17,7 +17,7 @@ export class ImageItemComponent {
   @Input({ required: true }) image!: Image;
 
   private toastr = inject(ToastrService);
-  private shoppingCartService = inject(ShoppingCardService);
+  private shoppingCartService = inject(ShoppingCartService);
   private imageService = inject(ImageService);
 
   addToCart() {

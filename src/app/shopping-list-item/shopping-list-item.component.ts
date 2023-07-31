@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
-import { ShoppingCardService } from './shopping-card.service';
+import { ShoppingCartService } from './shopping-cart.service';
 import { ShoppingItem } from 'src/app/interfaces/shopping-item.interface';
 
 @Component({
@@ -14,7 +14,7 @@ import { ShoppingItem } from 'src/app/interfaces/shopping-item.interface';
 export class ShoppingListItemComponent {
   @Input() shoppingItem!: ShoppingItem;
 
-  constructor(private shoppingCartService: ShoppingCardService) {}
+  constructor(private shoppingCartService: ShoppingCartService) {}
 
   onDeleteFromCart() {
     this.shoppingCartService.removeItemFromCart(this.shoppingItem);
@@ -25,6 +25,6 @@ export class ShoppingListItemComponent {
     this.shoppingCartService.addImage(image);
   }
   decreaseQuantity() {
-    this.shoppingCartService.decreaseQuantityFromCart(this.shoppingItem);
+    this.shoppingCartService.reduceItemQuantity(this.shoppingItem);
   }
 }
