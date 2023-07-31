@@ -17,7 +17,7 @@ import { ShoppingListItemComponent } from '../shopping-list-item/shopping-list-i
   styleUrls: ['./side-bar.component.scss'],
 })
 export class SideBarComponent {
-  shoppingSideBar = this.shoppingCartService.shoppingSideBar;
+  shoppingSideBar = this.shoppingCartService.showSidebar;
   shoppingList = this.shoppingCartService.shoppingList;
   totalPrice = this.shoppingCartService.totalPrice;
 

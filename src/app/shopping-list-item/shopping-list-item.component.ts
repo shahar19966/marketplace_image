@@ -12,20 +12,19 @@ import { ShoppingItem } from 'src/app/interfaces/shopping-item.interface';
   styleUrls: ['./shopping-list-item.component.scss'],
 })
 export class ShoppingListItemComponent {
-  @Input() shoppingItem: ShoppingItem | undefined;
+  @Input() shoppingItem!: ShoppingItem;
 
   constructor(private shoppingCartService: ShoppingCardService) {}
 
   onDeleteFromCart() {
     this.shoppingCartService.removeItemFromCart(this.shoppingItem);
   }
-  onPlusClick() {
-    const image = this.shoppingItem?.image;
-    if (image) {
-      this.shoppingCartService.addItemToCart(image);
-    }
+
+  increaseQuantity() {
+    const image = this.shoppingItem.image;
+    this.shoppingCartService.addImage(image);
   }
-  onMinusClick() {
+  decreaseQuantity() {
     this.shoppingCartService.decreaseQuantityAndCount(this.shoppingItem);
   }
 }

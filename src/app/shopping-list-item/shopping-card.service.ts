@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, computed, signal } from '@angular/core';
 import { Image } from '../interfaces/image.interface';
 import { ShoppingItem } from '../interfaces/shopping-item.interface';
 
@@ -6,68 +6,69 @@ import { ShoppingItem } from '../interfaces/shopping-item.interface';
   providedIn: 'root',
 })
 export class ShoppingCardService {
-  //global val
-  shoppingSideBar = signal<boolean>(false);
-  count = signal(this.getFromLocalStorage('count', 0));
-  totalPrice = signal(this.getFromLocalStorage('totalPrice', 0));
+  showSidebar = signal(false);
 
-  shoppingList = signal<ShoppingItem[]>(
-    this.getFromLocalStorage('shoppingList', [])
+  shoppingList = signal(
+    this.getFromLocalStorage<ShoppingItem[]>('shoppingList', [])
   );
+
+  totalPrice = computed(() => {
+    let sum = 0;
+    for (const item of this.shoppingList()) {
+      sum += item.price;
+    }
+    return sum;
+  });
+
+  totalQuantity = computed(() => {
+    let sum = 0;
+    for (const item of this.shoppingList()) {
+      sum += item.quantity;
+    }
+    return sum;
+  });
 
   //open and close the side bar if click on cart
   openShoppingSideBar() {
-    this.shoppingSideBar.set(!this.shoppingSideBar());
+    this.showSidebar.set(!this.showSidebar());
   }
 
-  //update the global count
-  updateCount(quantity: number, incrase: boolean) {
-    if (incrase) this.count.update((value) => value + quantity);
-    else this.count.update((value) => value - quantity);
-  }
+  //add image to shopping cart
+  addImage(image: Image) {
+    const findImage = this.findImage(image);
 
-  //update the total price
-  updateTotalPrice(price: number, incrase: boolean) {
-    if (incrase) this.totalPrice.update((value) => value + price);
-    else this.totalPrice.update((value) => value - price);
-  }
+    // image does not exists in shopping cart, add it
+    if (!findImage) {
+      this.shoppingList.mutate((values) =>
+        values.push({ image, quantity: 1, price: image.price })
+      );
+    } else {
+      // increase quantity
+      findImage.quantity += 1;
+      // this.shoppingList.mutate(())
+    }
 
-  //add Item(Image) to shopping cart
-  addItemToCart(image: Image) {
-    this.updateCount(1, true);
-    this.updateTotalPrice(image.price, true);
-    this.checkIfImageExsist(image);
     this.saveToLocalStorage();
   }
 
   //remove item from cart and update the side effect like price and Quantity
-  removeItemFromCart(ShoppingItem: ShoppingItem | undefined) {
-    if (typeof ShoppingItem === 'undefined') {
+  removeItemFromCart(shoppingItem: ShoppingItem) {
+    if (!shoppingItem) {
       return;
     }
+
     const index = this.shoppingList().findIndex(
-      (item) => item === ShoppingItem
+      (item) => item === shoppingItem
     );
     if (index !== -1) {
       this.shoppingList().splice(index, 1);
-      this.updateCount(ShoppingItem.quantity, false);
-      this.updateTotalPrice(ShoppingItem.price, false);
     }
     this.saveToLocalStorage();
   }
 
-  // Check if the image exists in the shopping list and update quantity/price accordingly or crete new item
-  checkIfImageExsist(image: Image) {
-    const existingItem = this.shoppingList().find(
-      (item) => item.image === image
-    );
-    if (existingItem) {
-      this.increseQuantityAndPrice(existingItem);
-    } else {
-      this.shoppingList.mutate((values) =>
-        values.push({ image, quantity: 1, price: image.price })
-      );
-    }
+  // Check if the image exists in the shopping list
+  findImage(image: Image) {
+    return this.shoppingList().find((item) => item.image === image);
   }
 
   // increse the Quantity and price of shopping element
@@ -89,14 +90,12 @@ export class ShoppingCardService {
     shoppingItem.quantity--;
     shoppingItem.price = shoppingItem.price - shoppingItem.image.price;
 
-    this.updateTotalPrice(shoppingItem.image.price, false);
-    this.updateCount(1, false);
     this.saveToLocalStorage();
   }
 
   //save update to LocalStorage
   saveToLocalStorage() {
-    localStorage.setItem('count', JSON.stringify(this.count()));
+    localStorage.setItem('count', JSON.stringify(this.totalQuantity()));
     localStorage.setItem('totalPrice', JSON.stringify(this.totalPrice()));
     localStorage.setItem('shoppingList', JSON.stringify(this.shoppingList()));
   }

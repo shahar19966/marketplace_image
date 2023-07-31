@@ -21,7 +21,7 @@ export class ImageItemComponent {
   private imageService = inject(ImageService);
 
   addToCart() {
-    this.shoppingCartService.addItemToCart(this.image);
+    this.shoppingCartService.addImage(this.image);
     this.toastr.success('Image added successfully');
   }
 
