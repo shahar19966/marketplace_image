@@ -31,9 +31,11 @@
         id="imageURL"
         formControlName="imageURL"
         pTooltip="Valid URL required*"
+        #targetEl
       />
       <label htmlFor="imageURL" req>Image URL</label>
     </span>
+    <p-image *ngIf="imageURL.valid" [src]="imageURL.value" [preview]="true" />
 
     <!--price input-->
     <div class="p-inputgroup">
@@ -48,6 +50,7 @@
       />
       <span class="p-inputgroup-addon">.00</span>
     </div>
+
     <!-- <p-autoComplete
       [(ngModel)]="selectedCountry"
       [dropdown]="true"
