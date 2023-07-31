@@ -5,12 +5,15 @@
   [showCloseIcon]="false"
 >
   <div
-    *ngIf="shoppingList() && shoppingList().length > 0; else emptyShoppingList"
+    *ngIf="
+      shoppingCartService.shoppingList()!.length > 0;
+      else emptyShoppingList
+    "
   >
     <div class="shopping-list-container">
       <app-shopping-list-item
-        *ngFor="let imageElement of shoppingList()"
-        [shoppingItem]="imageElement"
+        *ngFor="let shoppingItem of shoppingCartService.shoppingList()"
+        [shoppingItem]="shoppingItem"
       >
       </app-shopping-list-item>
       <p style="align-self: center; font-weight: bold">

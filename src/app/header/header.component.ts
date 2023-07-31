@@ -21,7 +21,7 @@ import { ImageService } from '../images/image.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  count = this.shoppingCartService.totalQuantity;
+  totalQuantity = this.shoppingCartService.totalQuantity;
 
   constructor(
     private shoppingCartService: ShoppingCardService,

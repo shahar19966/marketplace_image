@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SidebarModule } from 'primeng/sidebar';
 import { ButtonModule } from 'primeng/button';
@@ -17,11 +17,10 @@ import { ShoppingListItemComponent } from '../shopping-list-item/shopping-list-i
   styleUrls: ['./side-bar.component.scss'],
 })
 export class SideBarComponent {
+  shoppingCartService = inject(ShoppingCardService);
   shoppingSideBar = this.shoppingCartService.showSidebar;
-  shoppingList = this.shoppingCartService.shoppingList;
+  // shoppingList = this.shoppingCartService.shoppingList;
   totalPrice = this.shoppingCartService.totalPrice;
-
-  constructor(private shoppingCartService: ShoppingCardService) {}
 
   onSidebarHide() {
     this.shoppingCartService.openShoppingSideBar();
