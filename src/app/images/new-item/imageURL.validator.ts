@@ -30,9 +30,9 @@
 //       );
 //   }
 
-//ask tomer !
+//ask tomer about the method above and also about try/catch in Observable!!
 
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import {
   AbstractControl,
   AsyncValidator,
@@ -42,6 +42,8 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class ImageUrlValidator implements AsyncValidator {
+  overlayVisible = signal(false);
+
   //if the url vaild return null(V) else return true(X)
   validate(
     ctrl: AbstractControl

@@ -1,4 +1,10 @@
-import { Component, inject } from '@angular/core';
+import {
+  Component,
+  ViewChild,
+  ElementRef,
+  inject,
+  effect,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
@@ -15,6 +21,7 @@ import { Router } from '@angular/router';
 import { Image } from '../../interfaces/image.interface';
 import { ImageUrlValidator } from './imageURL.validator';
 import { TooltipModule } from 'primeng/tooltip';
+import { ImageModule } from 'primeng/image';
 
 @Component({
   selector: 'app-new-item',
@@ -27,6 +34,7 @@ import { TooltipModule } from 'primeng/tooltip';
     ReactiveFormsModule,
     AutoCompleteModule,
     TooltipModule,
+    ImageModule,
   ],
   templateUrl: './new-item.component.html',
   styleUrls: ['./new-item.component.scss'],
@@ -68,6 +76,10 @@ export class NewItemComponent {
     this.form.valueChanges.subscribe(() => {
       this.hasUnsavedChanges = this.form.dirty;
     });
+  }
+
+  get imageURL() {
+    return this.form.controls.imageURL;
   }
 
   onSubmit() {

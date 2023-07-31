@@ -20,7 +20,7 @@
 
 .loadingImage {
   @extend .images-list;
-  animation: slide-in-bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-in-bottom 0.7s ease-out both;
 }
 
 .loading {
