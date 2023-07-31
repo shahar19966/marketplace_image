@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AnimationOptions, LottieModule } from 'ngx-lottie';
 import { interval, take } from 'rxjs';
 import { ImageSrvice } from '../images/image.service';
-import { LoadingSrvice } from './loading.service';
+import { LoadingService } from './loading.service';
 
 @Component({
   selector: 'app-loader',
@@ -15,7 +15,7 @@ import { LoadingSrvice } from './loading.service';
 export class LoaderComponent {
   // loading = true;
 
-  loadingSrvice = inject(LoadingSrvice);
+  loadingSrvice = inject(LoadingService);
 
   options: AnimationOptions = {
     path: 'assets/lottie/shop.json',

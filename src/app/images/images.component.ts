@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ImageItemComponent } from './image-item/image-item.component';
 import { ImageSrvice } from './image.service';
 import { LoaderComponent } from '../loader/loader.component';
-import { LoadingSrvice } from '../loader/loading.service';
+import { LoadingService } from '../loader/loading.service';
 
 @Component({
   selector: 'app-images',
@@ -14,6 +14,6 @@ import { LoadingSrvice } from '../loader/loading.service';
 })
 export class ImagesComponent {
   imageService = inject(ImageSrvice);
-  loadingService = inject(LoadingSrvice);
+  loadingService = inject(LoadingService);
   images = this.imageService.filteredImages;
 }
