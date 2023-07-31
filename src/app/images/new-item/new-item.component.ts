@@ -5,11 +5,13 @@ import {
   inject,
   effect,
 } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { CommonModule } from '@angular/common';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import {
+  FormControl,
   FormsModule,
   NonNullableFormBuilder,
   ReactiveFormsModule,
@@ -19,9 +21,9 @@ import { ImageSrvice } from '../image.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { Image } from '../../interfaces/image.interface';
-import { ImageUrlValidator } from './imageURL.validator';
 import { TooltipModule } from 'primeng/tooltip';
 import { ImageModule } from 'primeng/image';
+import { imageUrlValidator } from './imageURL.validator';
 
 @Component({
   selector: 'app-new-item',
@@ -42,7 +44,6 @@ import { ImageModule } from 'primeng/image';
 export class NewItemComponent {
   //inject
   formBuilder = inject(NonNullableFormBuilder);
-  imageUrlValidator = inject(ImageUrlValidator);
   imageService = inject(ImageSrvice);
   toastr = inject(ToastrService);
   router = inject(Router);
@@ -58,25 +59,21 @@ export class NewItemComponent {
       '',
       [Validators.required, Validators.minLength(3), Validators.maxLength(20)],
     ],
-    imageURL: [
-      '',
-      {
-        validators: [Validators.required],
-        asyncValidators: [
-          this.imageUrlValidator.validate.bind(this.imageUrlValidator),
-        ],
-        updateOn: 'blur',
-      },
-    ],
+    imageURL: this.formBuilder.control('', {
+      validators: Validators.required,
+      asyncValidators: imageUrlValidator,
+      updateOn: 'change',
+    }),
     price: [0, [Validators.required, Validators.min(11), Validators.max(1000)]],
     category: [''],
   });
 
-  ngOnInit() {
-    this.form.valueChanges.subscribe(() => {
+  formChanges = toSignal(this.form.valueChanges);
+  hasChangesEffect = effect(() => {
+    if (this.formChanges()) {
       this.hasUnsavedChanges = this.form.dirty;
-    });
-  }
+    }
+  });
 
   get imageURL() {
     return this.form.controls.imageURL;
