@@ -4,7 +4,7 @@ import { ButtonModule } from 'primeng/button';
 import { Image } from 'src/app/interfaces/image.interface';
 import { ShoppingCardService } from 'src/app/shopping-list-item/shopping-card.service';
 import { ToastrService } from 'ngx-toastr';
-import { ImageSrvice } from '../image.service';
+import { ImageService } from '../image.service';
 
 @Component({
   selector: 'app-image-item',
@@ -18,7 +18,7 @@ export class ImageItemComponent {
 
   private toastr = inject(ToastrService);
   private shoppingCartService = inject(ShoppingCardService);
-  private imageService = inject(ImageSrvice);
+  private imageService = inject(ImageService);
 
   onAddToCart() {
     if (this.image) {

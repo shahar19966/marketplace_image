@@ -5,7 +5,7 @@ import { MOCK_IMAGES } from './images';
 @Injectable({
   providedIn: 'root',
 })
-export class ImageSrvice {
+export class ImageService {
   searchTerm = signal('');
   images = signal(this.getImagesFromLocalStorage());
   loading = signal(true);

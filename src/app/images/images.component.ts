@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ImageItemComponent } from './image-item/image-item.component';
-import { ImageSrvice } from './image.service';
+import { ImageService } from './image.service';
 import { LoaderComponent } from '../loader/loader.component';
 import { LoadingService } from '../loader/loading.service';
 
@@ -13,7 +13,7 @@ import { LoadingService } from '../loader/loading.service';
   styleUrls: ['./images.component.scss'],
 })
 export class ImagesComponent {
-  imageService = inject(ImageSrvice);
+  imageService = inject(ImageService);
   loadingService = inject(LoadingService);
   images = this.imageService.filteredImages;
 }

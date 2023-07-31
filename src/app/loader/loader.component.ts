@@ -2,7 +2,6 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AnimationOptions, LottieModule } from 'ngx-lottie';
 import { interval, take } from 'rxjs';
-import { ImageSrvice } from '../images/image.service';
 import { LoadingService } from './loading.service';
 
 @Component({

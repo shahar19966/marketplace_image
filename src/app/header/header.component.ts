@@ -5,7 +5,7 @@ import { BadgeModule } from 'primeng/badge';
 import { ButtonModule } from 'primeng/button';
 import { ShoppingCardService } from '../shopping-list-item/shopping-card.service';
 import { Router, ActivatedRoute, RouterLink } from '@angular/router';
-import { ImageSrvice } from '../images/image.service';
+import { ImageService } from '../images/image.service';
 
 @Component({
   selector: 'app-header',
@@ -25,7 +25,7 @@ export class HeaderComponent {
 
   constructor(
     private shoppingCartService: ShoppingCardService,
-    private imageService: ImageSrvice,
+    private imageService: ImageService,
     private router: Router,
     private route: ActivatedRoute
   ) {}

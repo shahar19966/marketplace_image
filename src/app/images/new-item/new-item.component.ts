@@ -17,7 +17,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { ImageSrvice } from '../image.service';
+import { ImageService } from '../image.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { Image } from '../../interfaces/image.interface';
@@ -44,7 +44,7 @@ import { imageUrlValidator } from './imageURL.validator';
 export class NewItemComponent {
   //inject
   formBuilder = inject(NonNullableFormBuilder);
-  imageService = inject(ImageSrvice);
+  imageService = inject(ImageService);
   toastr = inject(ToastrService);
   router = inject(Router);
 
