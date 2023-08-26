@@ -13,6 +13,6 @@ export class LoaderComponent {
   options: AnimationOptions = {
     path: 'assets/lottie/shop.json',
     autoplay: true,
-    loop: true,
+    loop: false,
   };
 }

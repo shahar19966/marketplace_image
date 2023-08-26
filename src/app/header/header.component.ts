@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InputTextModule } from 'primeng/inputtext';
 import { BadgeModule } from 'primeng/badge';
@@ -21,15 +21,13 @@ import { ImageService } from '../images/image.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
+  
+  shoppingCartService = inject(ShoppingCartService);
+  imageService = inject(ImageService);
+  router = inject(Router);
+  route = inject(ActivatedRoute);
+
   totalQuantity = this.shoppingCartService.totalQuantity;
-
-  constructor(
-    private shoppingCartService: ShoppingCartService,
-    private imageService: ImageService,
-    private router: Router,
-    private route: ActivatedRoute
-  ) {}
-
   onCartClick() {
     this.shoppingCartService.openShoppingSideBar();
   }
